@@ -1,0 +1,20 @@
+* /Users/adensmore/Dropbox/School/Simulation/dc-conv-sim/bi-directional-conv-dchg.asc
+V1 N003 0 12
+L1 N002 N003 500µ Ipk=6.3 Rser=141.9m Rpar=61.23K Cpar=0 mfg=" ---" pn=" ---"
+D1 N002 N001 RFN60TS6D
+R1 N001 0 20
+C1 N001 0 490µ Rser=60m Lser=0 mfg=" ---" pn=" ---" type=" ---"
+M2 N002 N004 0 0 IPB016N06L3
+D2 0 N002 RFN60TS6D
+V2 N004 0 PULSE(0 12 0 0 0 .000004 .00002)
+C2 N003 0 490µ Rser=60m Lser=0 mfg=" ---" pn=" ---" type=" ---"
+M1 N001 N002 N002 N002 IPB016N06L3
+.model D D
+.lib /Users/adensmore/Library/Application Support/LTspice/lib/cmp/standard.dio
+.model NMOS NMOS
+.model PMOS PMOS
+.lib /Users/adensmore/Library/Application Support/LTspice/lib/cmp/standard.mos
+.tran 0 .1 .09 .001
+* Bi-direction DC/DC converter. Left side is Port 0, DC bus. \nRight side is Port 1, battery. In this model, the battery is discharging into the DC bus.
+.backanno
+.end
